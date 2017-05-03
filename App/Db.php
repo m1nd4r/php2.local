@@ -3,7 +3,6 @@
 namespace Models;
 
 
-class Db
-{
+class Db {
 
 }
