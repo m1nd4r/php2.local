@@ -7,7 +7,7 @@ abstract class Model {
 
     const TABLE = '';
 
-    public function findAll() {
+    public static function findAll() {
 
         $db = new Db();
         return $db->query('SELECT * FROM ' . static::TABLE, static::class);
