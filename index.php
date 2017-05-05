@@ -2,6 +2,6 @@
 
 require __DIR__ . '/autoload.php';
 
-$users = \App\Models\User::findAll();
+$users = \App\Models\User::findById(5);
 
 var_dump($users);
