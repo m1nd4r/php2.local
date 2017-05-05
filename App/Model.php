@@ -13,3 +13,4 @@ abstract class Model {
         return $db->query('SELECT * FROM ' . static::TABLE, static::class);
     }
 }
+
