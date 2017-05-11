@@ -62,12 +62,16 @@ abstract class Model
     }
 
 
-    public function update($id)
+    public function update($id, $name, $email)
     {
-        $sql = 'UPDATE `users` SET `name`=\'Vasya Pupkin\' WHERE id=6';
+        $sql = 'UPDATE ' .static::TABLE . ' SET name=\'' . $name . '\', email=\'' . $email . '\' WHERE id=' . $id;
         $db = Db::instance();
+        $db->execute($sql);
+    }
 
 
+    public function save()
+    {
 
     }
 
