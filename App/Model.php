@@ -23,6 +23,7 @@ abstract class Model
         return empty($this->id);
     }
 
+
     public function insert()
     {
         if (!$this->isNew()) {
@@ -39,12 +40,8 @@ abstract class Model
             $values[':'.$k] = $v;
         }
 
-        $sql = '
-INSERT INTO ' . static::TABLE . '
-(' . implode(',', $columns) . ')
-VALUES
-(' . implode(',', array_keys($values)) . ')
-        ';
+        $sql = 'INSERT INTO ' . static::TABLE . '(' . implode(',', $columns) . ') VALUES (' . implode(',', array_keys($values)) . ')';
+
         $db = Db::instance();
         $db->execute($sql, $values);
     }
