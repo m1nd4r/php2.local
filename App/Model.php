@@ -2,27 +2,51 @@
 
 namespace App;
 
-
-abstract class Model {
+abstract class Model
+{
 
     const TABLE = '';
 
-    public static function findAll() {
+    public $id;
 
-        $db = new Db();
-        return $db->query('SELECT * FROM ' . static::TABLE, static::class);
+    public static function findAll()
+    {
+        $db = Db::instance();
+        return $db->query(
+            'SELECT * FROM ' . static::TABLE,
+            static::class
+        );
     }
 
-    public static function findById($id) {
+    public function isNew()
+    {
+        return empty($this->id);
+    }
 
-        $db = new Db();
-        $res = $db->execute('SELECT * FROM ' . static::TABLE . ' WHERE id=' . $id);
-
-        if (false !== $res) {
-            return $db->query('SELECT * FROM ' . static::TABLE . ' WHERE id=' . $id, static::class);
-        } else {
-            return false;
+    public function insert()
+    {
+        if (!$this->isNew()) {
+            return;
         }
-    }
-}
 
+        $columns = [];
+        $values = [];
+        foreach ($this as $k => $v) {
+            if ('id' == $k) {
+                continue;
+            }
+            $columns[] = $k;
+            $values[':'.$k] = $v;
+        }
+
+        $sql = '
+INSERT INTO ' . static::TABLE . '
+(' . implode(',', $columns) . ')
+VALUES
+(' . implode(',', array_keys($values)) . ')
+        ';
+        $db = Db::instance();
+        $db->execute($sql, $values);
+    }
+
+}

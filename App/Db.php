@@ -1,31 +1,35 @@
 <?php
 
+
 namespace App;
 
+class Db
+{
 
-class Db {
+    use Singleton;
 
     protected $dbh;
 
-    public function __construct() {
-
+    protected function __construct()
+    {
         $this->dbh = new \PDO('mysql:host=127.0.0.1;dbname=test', 'root', '');
     }
 
-    public function execute($sql, $p_array=[]) {
-
+    public function execute($sql, $params = [])
+    {
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute($p_array);
+        $res = $sth->execute($params);
         return $res;
     }
 
-    public function query($sql, $class, $p_array=[]) {
-
+    public function query($sql, $class)
+    {
         $sth = $this->dbh->prepare($sql);
-        $res = $sth->execute($p_array);
+        $res = $sth->execute();
         if (false !== $res) {
             return $sth->fetchAll(\PDO::FETCH_CLASS, $class);
         }
         return [];
     }
+
 }
