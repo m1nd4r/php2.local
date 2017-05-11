@@ -17,4 +17,8 @@ class User extends Model
         return $this->email;
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
 }

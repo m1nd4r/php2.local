@@ -8,3 +8,4 @@ $user = new User();
 $user->name = 'Vasya';
 $user->email = 'v@pupkin.ru';
 $user->insert();
+

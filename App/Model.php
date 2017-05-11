@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Models\User;
+
 abstract class Model
 {
 
@@ -44,6 +46,9 @@ abstract class Model
 
         $db = Db::instance();
         $db->execute($sql, $values);
+        $last_id = $db->query('SELECT id FROM `users` ORDER BY `users`.`id` DESC LIMIT 1', User::class);
+
+        $this->id = $last_id[0]->id;
     }
 
 }
