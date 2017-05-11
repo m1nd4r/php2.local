@@ -15,10 +15,20 @@ abstract class Model
     {
         $db = Db::instance();
         return $db->query(
-            'SELECT * FROM ' . static::TABLE,
-            static::class
-        );
+            'SELECT * FROM ' . static::TABLE, static::class);
     }
+
+    public static function findById($id) {
+
+        $db = Db::instance();
+        $res = $db->execute('SELECT * FROM ' . static::TABLE . ' WHERE id=' . $id);
+
+        if (false !== $res) {
+            return $db->query('SELECT * FROM ' . static::TABLE . ' WHERE id=' . $id, static::class);
+        } else {
+            return false;
+        }
+     }
 
     public function isNew()
     {
@@ -46,9 +56,19 @@ abstract class Model
 
         $db = Db::instance();
         $db->execute($sql, $values);
-        $last_id = $db->query('SELECT id FROM `users` ORDER BY `users`.`id` DESC LIMIT 1', User::class);
+        $last_id = $db->query('SELECT id FROM ' . static::TABLE . ' ORDER BY `users`.`id` DESC LIMIT 1', User::class);
 
         $this->id = $last_id[0]->id;
+    }
+
+
+    public function update($id)
+    {
+        $sql = 'UPDATE `users` SET `name`=\'Vasya Pupkin\' WHERE id=6';
+        $db = Db::instance();
+
+
+
     }
 
 }

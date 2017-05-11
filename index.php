@@ -7,5 +7,5 @@ require __DIR__ . '/autoload.php';
 $user = new User();
 $user->name = 'Vasya';
 $user->email = 'v@pupkin.ru';
-$user->insert();
+$user->findById(13);
 
