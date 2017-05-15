@@ -69,10 +69,14 @@ abstract class Model
         $db->execute($sql);
     }
 
-
     public function save()
     {
-
+        if (!$this->isNew()) {
+            $this->update($this->id, $this->name, $this->email);
+        } else {
+            $this->insert();
+        }
     }
+
 
 }
