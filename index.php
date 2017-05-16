@@ -2,7 +2,7 @@
 
 require __DIR__ . '/autoload.php';
 
-$view = new View();
+$view = new \App\View();
 
 $view->title = 'My top site';
 $view->users = \App\Models\User::findAll();
