@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\User;
-
 require __DIR__ . '/autoload.php';
 
-$user = new User();
-$user->name = 'Vasya';
-$user->email = 'v@pupkin.ru';
-$user->findById(13);
+$view = new View();
 
+$view->title = 'My top site';
+$view->users = \App\Models\User::findAll();
+
+$view->display(__DIR__ . '/App/templates/index.php');
