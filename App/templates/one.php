@@ -19,24 +19,20 @@
 </head>
 <body>
 
-<h1>All news</h1>
+<h1>One article</h1>
 
-<?php foreach ($news as $article) : ?>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <?php echo $article->title; ?>
-        </div>
-        <div class="panel-body">
-
-            <?php if (!empty($article->author)): ?>
-                Автор: <?php echo $article->author->name; ?>
-            <?php endif; ?>
-
-        </div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <?php echo $article->title; ?>
     </div>
+    <div class="panel-body">
 
-<?php endforeach; ?>
+        <?php if (!empty($article->author)): ?>
+            Автор: <?php echo $article->author->name; ?>
+        <?php endif; ?>
+
+    </div>
+</div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

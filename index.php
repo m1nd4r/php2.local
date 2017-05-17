@@ -2,9 +2,10 @@
 
 require __DIR__ . '/autoload.php';
 
-$view = new \App\View();
+$url = $_SERVER['REQUEST_URI'];
 
-$view->title = 'My top site';
-$view->users = \App\Models\User::findAll();
+$controller = new \App\Controllers\News();
 
-$view->display(__DIR__ . '/App/templates/index.php');
+$action = $_GET['action'] ?: 'Index';
+
+$controller->action($action);
