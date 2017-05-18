@@ -19,6 +19,12 @@
 </head>
 <body>
 
+<?php foreach ($errors as $error): ?>
+    <div class="alert alert-danger">
+        <?php echo $error->getMessage(); ?>
+    </div>
+<?php endforeach; ?>
+
 <h1>Одна новость</h1>
 
 <div class="panel panel-default">

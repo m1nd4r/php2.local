@@ -8,4 +8,10 @@ $controller = new \App\Controllers\News();
 
 $action = $_GET['action'] ?: 'Index';
 
-$controller->action($action);
+try {
+    $controller->action($action);
+} catch (\App\Exceptions\Core $e) {
+    echo 'App exception appeared: ' . $e->getMessage();
+} catch (PDOException $e) {
+    echo 'Smth wrong with base';
+}

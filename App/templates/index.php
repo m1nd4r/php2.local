@@ -19,7 +19,7 @@
 </head>
 <body>
 
-<h1>All news</h1>
+<h1>Все новости</h1>
 
 <?php foreach ($news as $article) : ?>
 
