@@ -19,3 +19,5 @@ spl_autoload_register (function ($class) {
         include $filename;
     }
 });
+
+include __DIR__ . '/vendor/autoload.php';

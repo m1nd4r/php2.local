@@ -1,0 +1,9 @@
+{
+  "require": {
+    "pr-of-it/t4": "dev-master",
+    "psr/log": "dev-master",
+    "phpunit/php-timer": "dev-master",
+    "twig/twig": "dev-master",
+    "swiftmailer/swiftmailer": "dev-master"
+  }
+}
