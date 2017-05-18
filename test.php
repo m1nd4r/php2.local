@@ -3,11 +3,20 @@
 
 require __DIR__ . '/autoload.php';
 
-$a = new \App\Collection();
-$a[1] = 1;
-$a[11] = 11;
-$a[2] = 234;
-
-foreach ($a as $el) {
-    echo $el;
+function getFilter($type)
+{
+    switch ($type) {
+        case 'email':
+            return function ($x) {
+                return trim($x);
+            };
+            break;
+        case 'username':
+            return function ($x) {
+                return str_replace(' ', '', $x);
+            };
+            break;
+    }
 }
+
+echo getFilter('email')('   fsd  fs df sd fsdf    ');
